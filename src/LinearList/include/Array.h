@@ -13,7 +13,7 @@ template<typename T>
 class Array : public List<T> {
 public:
     Array() {
-        data = new T[capacity];
+        data = new T[capacity]; // 开一块新空间
     }
 
     Array(const std::initializer_list<T> &init) {
@@ -23,14 +23,14 @@ public:
 
     ~Array() {
         if (data != nullptr) {
-            delete[] data;
+            delete[] data; // 如果不是空指针则delete掉(nullptr delete也没啥事就是说)
         }
     }
 
     void clear() override {
-        delete[] data;
+        delete[] data; // 清空数据存储
         length = 0;
-        data = new T[capacity];
+        data = new T[capacity]; // 新开一块内存
     }
 
     bool isEmpty() override {
@@ -42,11 +42,11 @@ public:
     }
 
     bool append(const T &src) override {
-        if (length < capacity) {
-            data[length++] = src;
+        if (length < capacity) { // 如果没有超出容量限制
+            data[length++] = src; // 直接放进去然后长度+1
             return true;
         }
-        resize(capacity * 2);
+        resize(capacity * 2); // 如果超出容量限制则重新分配空间,新空间大小是原来的两倍(n特别大的时候会内存错误)
         data[length++] = src;
         return true;
     }
@@ -59,12 +59,12 @@ public:
     }
 
     bool insert(uint pos, const T &src) override {
-        if (pos >= length) return append(src);
+        if (pos >= length) return append(src); // 如果pos大于长度,压根找不到你这个地方就在队尾推入
         if (length >= capacity) {
             resize(capacity * 2);
         }
         for (int i = length; i > pos; --i) {
-            data[i] = data[i - 1];
+            data[i] = data[i - 1]; // 将元素依次后移一个位置
         }
         data[pos] = src;
         length++;
@@ -79,13 +79,13 @@ public:
     }
 
     bool remove(uint pos) override {
-        if (pos >= length) return false;
+        if (pos >= length) return false; // 如果压根没有,直接返回
         for (int i = pos; i < length - 1; ++i) {
-            data[i] = data[i + 1];
+            data[i] = data[i + 1]; // 元素依次前移
         }
         length--;
-        if (length <= capacity / 4 && capacity / 2 > ARRAY_MINIMUM_SIZE) {
-            resize(capacity / 2);
+        if (length <= capacity / 4 && capacity / 2 >= ARRAY_MINIMUM_SIZE) {
+            resize(capacity / 2); // 如果当前长度小于等于容量的四分之一并且容量的一半大于等于最小容量,则缩容至原来的一半
         }
         return true;
     }
@@ -94,10 +94,10 @@ public:
         if (end >= length) return false;
         if (start > end) return false;
         for (int i = end; i < length; ++i) {
-            data[start + i - end] = data[i];
+            data[start + i - end] = data[i]; // 直接整体前移
         }
         length -= end - start + 1;
-        if (length <= capacity / 4 && capacity / 2 > ARRAY_MINIMUM_SIZE) {
+        if (length <= capacity / 4 && capacity / 2 >= ARRAY_MINIMUM_SIZE) {
             resize(capacity / 2);
         }
         return true;

@@ -32,7 +32,7 @@ public:
     };
 
     ~LinkList() {
-        uint total = 0;
+        uint total = 0; // 开个变量用来记录释放数量
         LinkNode<T> *tmp;
         while (head != tail) {
             tmp = head->next;
