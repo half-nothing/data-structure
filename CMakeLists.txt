@@ -15,4 +15,4 @@ include_directories(./src/include)
 include_directories(./src/LinearList/include)
 
 add_executable(Array src/LinearList/test/ArrayTest.cpp)
-add_executable(LinkList src/LinearList/test/LinkListTest.cpp)
+add_executable(DoubleLinkList src/LinearList/test/DoubleLinkListTest.cpp)

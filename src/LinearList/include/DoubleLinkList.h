@@ -1,11 +1,11 @@
 /**
  * @author Half_nothing
  * @data 2023.06
- * @class LinkList
+ * @class DoubleLinkList
  */
 
-#ifndef DATA_STRUCTURE_LINKLIST_H
-#define DATA_STRUCTURE_LINKLIST_H
+#ifndef DATA_STRUCTURE_DOUBLE_LINK_LIST_H
+#define DATA_STRUCTURE_DOUBLE_LINK_LIST_H
 
 #include <ostream>
 #include "List.h"
@@ -22,16 +22,16 @@ struct LinkNode {
 };
 
 template<typename T>
-class LinkList : public List<T> {
+class DoubleLinkList : public List<T> {
 public:
-    LinkList() {
+    DoubleLinkList() {
         head = new LinkNode<T>();
         tail = new LinkNode<T>();
         head->next = tail;
         tail->prev = head;
     };
 
-    ~LinkList() {
+    ~DoubleLinkList() {
         uint total = 0; // 开个变量用来记录释放数量
         LinkNode<T> *tmp;
         while (head != tail) {
@@ -44,7 +44,7 @@ public:
         std::cout << "Release " << total + 1 << " nodes" << std::endl;
     }
 
-    LinkList(const std::initializer_list<T> &init) {
+    DoubleLinkList(const std::initializer_list<T> &init) {
         head = new LinkNode<T>();
         tail = new LinkNode<T>();
         head->next = tail;
@@ -168,8 +168,8 @@ public:
         opt(startPtr->data);
     }
 
-    friend std::ostream &operator<<(std::ostream &os, const LinkList &list) {
-        os << "LinkList Length: " << list.length << std::endl
+    friend std::ostream &operator<<(std::ostream &os, const DoubleLinkList &list) {
+        os << "DoubleLinkList Length: " << list.length << std::endl
            << "Content: ";
         LinkNode<T> *temp = list.head->next;
         while (temp != list.tail) {
