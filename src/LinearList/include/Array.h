@@ -155,6 +155,7 @@ private:
         for (int i = 0; i < length; i++) {
             data[i] = temp[i];
         }
+        delete[] temp;
     }
 };
 

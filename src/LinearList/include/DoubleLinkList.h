@@ -33,14 +33,13 @@ public:
     ~DoubleLinkList() {
         uint total = 0; // 开个变量用来记录释放数量
         LinkNode<T> *tmp;
-        while (head != tail) {
+        while (head != nullptr) {
             tmp = head->next;
+            total++;
             delete head;
             head = tmp;
-            total++;
         }
-        delete head;
-        std::cout << "Release " << total + 1 << " nodes" << std::endl;
+        std::cout << "Release " << total << " nodes" << std::endl;
     }
 
     DoubleLinkList(const std::initializer_list<T> &init) {
@@ -53,12 +52,11 @@ public:
 
     void clear() override {
         LinkNode<T> *tmp;
-        while (head != tail) {
+        while (head != nullptr) {
             tmp = head->next;
             delete head;
             head = tmp;
         }
-        delete head;
         head = new LinkNode<T>();
         tail = new LinkNode<T>();
         head->next = tail;

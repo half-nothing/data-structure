@@ -1,0 +1,8 @@
+#include <iostream>
+#include "../include/SequentialQueue.h"
+
+using namespace std;
+
+int main() {
+    return 0;
+}

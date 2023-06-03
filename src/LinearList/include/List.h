@@ -5,6 +5,7 @@
 
 template<typename T>
 class List {
+public:
     // 清空线性表
     virtual void clear() = 0;
 

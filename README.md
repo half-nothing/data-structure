@@ -9,10 +9,10 @@
     - [X] [双链表](./src/LinearList/include/DoubleLinkList.h)  
     - [X] [循环双链表](./src/LinearList/include/CircularlyLinkList.h)
 - [ ] 栈与队列  
-    - [ ] 顺序栈  
-    - [ ] 链式栈  
-    - [ ] 顺序队列  
-    - [ ] 链式队列  
+    - [X] [顺序栈](./src/Stacks/include/SequentialStack.h)  
+    - [X] [链式栈](./src/Stacks/include/ChainStack.h)  
+    - [ ] [顺序队列](./src/Queues/include/SequentialQueue.h)  
+    - [ ] [链式队列](./src/Queues/include/ChainQueue.h)  
 - [ ] 字符串  
     - [ ] 字符串  
     - [ ] 字符串模式匹配算法  

@@ -18,3 +18,5 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
 add_subdirectory(src/LinearList)
+add_subdirectory(src/Stacks)
+add_subdirectory(src/Queues)
