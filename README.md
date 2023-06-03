@@ -4,13 +4,13 @@
 
 ### 目录
 - [X] 线性表  
-    - [X] [顺序表](./src/LinearList/include/Array.h)    
-    - [X] [单链表](./src/LinearList/include/SingleLinkList.h)  
-    - [X] [双链表](./src/LinearList/include/DoubleLinkList.h)  
-    - [X] [循环双链表](./src/LinearList/include/CircularlyLinkList.h)
+    - [X] [顺序表](./src/LinearList/include/Array.h) : `159fe047`    
+    - [X] [单链表](./src/LinearList/include/SingleLinkList.h) : `1aee4810`  
+    - [X] [双链表](./src/LinearList/include/DoubleLinkList.h) : `159fe047`  
+    - [X] [循环双链表](./src/LinearList/include/CircularlyLinkList.h) : `1aee4810`
 - [ ] 栈与队列  
-    - [X] [顺序栈](./src/Stacks/include/SequentialStack.h)  
-    - [X] [链式栈](./src/Stacks/include/ChainStack.h)  
+    - [X] [顺序栈](./src/Stacks/include/SequentialStack.h) : `66cb1280`  
+    - [X] [链式栈](./src/Stacks/include/ChainStack.h) : `66cb1280`  
     - [ ] [顺序队列](./src/Queues/include/SequentialQueue.h)  
     - [ ] [链式队列](./src/Queues/include/ChainQueue.h)  
 - [ ] 字符串  
