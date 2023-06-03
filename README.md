@@ -4,13 +4,13 @@
 
 ### 目录
 - [X] 线性表  
-    - [X] [顺序表](./src/LinearList/include/Array.h) : `159fe047`    
-    - [X] [单链表](./src/LinearList/include/SingleLinkList.h) : `1aee4810`  
-    - [X] [双链表](./src/LinearList/include/DoubleLinkList.h) : `159fe047`  
-    - [X] [循环双链表](./src/LinearList/include/CircularlyLinkList.h) : `1aee4810`
+    - [X] [顺序表](./src/LinearList/include/Array.h) : [`159fe047`](https://github.com/half-nothing/Data-structure/commit/159fe0476cadda63ca996f7ddbe2b95d08b5b2f0)    
+    - [X] [单链表](./src/LinearList/include/SingleLinkList.h) : [`1aee4810`](https://github.com/half-nothing/Data-structure/commit/1aee4810ab79ee029d34d3d36b1207c05ed32884)  
+    - [X] [双链表](./src/LinearList/include/DoubleLinkList.h) : [`159fe047`](https://github.com/half-nothing/Data-structure/commit/159fe0476cadda63ca996f7ddbe2b95d08b5b2f0)  
+    - [X] [循环双链表](./src/LinearList/include/CircularlyLinkList.h) : [`1aee4810`](https://github.com/half-nothing/Data-structure/commit/1aee4810ab79ee029d34d3d36b1207c05ed32884)
 - [ ] 栈与队列  
-    - [X] [顺序栈](./src/Stacks/include/SequentialStack.h) : `66cb1280`  
-    - [X] [链式栈](./src/Stacks/include/ChainStack.h) : `66cb1280`  
+    - [X] [顺序栈](./src/Stacks/include/SequentialStack.h) : [`66cb1280`](https://github.com/half-nothing/Data-structure/commit/66cb12801c1a7aba24762227fa913601e2b93978)  
+    - [X] [链式栈](./src/Stacks/include/ChainStack.h) : [`66cb1280`](https://github.com/half-nothing/Data-structure/commit/66cb12801c1a7aba24762227fa913601e2b93978)  
     - [ ] [顺序队列](./src/Queues/include/SequentialQueue.h)  
     - [ ] [链式队列](./src/Queues/include/ChainQueue.h)  
 - [ ] 字符串  
