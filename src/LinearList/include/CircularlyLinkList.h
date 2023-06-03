@@ -1,11 +1,11 @@
 /**
  * @author Half_nothing
  * @data 2023.06
- * @class DoubleLinkList
+ * @class CircularlyLinkList
  */
 
-#ifndef DATA_STRUCTURE_DOUBLE_LINK_LIST_H
-#define DATA_STRUCTURE_DOUBLE_LINK_LIST_H
+#ifndef DATA_STRUCTURE_CIRCULARLY_LINK_LIST_H
+#define DATA_STRUCTURE_CIRCULARLY_LINK_LIST_H
 
 #include "List.h"
 
@@ -21,48 +21,46 @@ struct LinkNode {
 };
 
 template<typename T>
-class DoubleLinkList : public List<T> {
+class CircularlyLinkList : public List<T> {
 public:
-    DoubleLinkList() {
+    CircularlyLinkList() {
         head = new LinkNode<T>();
-        tail = new LinkNode<T>();
-        head->next = tail;
-        tail->prev = head;
-    };
-
-    ~DoubleLinkList() {
-        uint total = 0; // 开个变量用来记录释放数量
-        LinkNode<T> *tmp;
-        while (head != tail) {
-            tmp = head->next;
-            delete head;
-            head = tmp;
-            total++;
-        }
-        delete head;
-        std::cout << "Release " << total + 1 << " nodes" << std::endl;
+        head->prev = head;
+        head->next = head;
     }
 
-    DoubleLinkList(const std::initializer_list<T> &init) {
+    CircularlyLinkList(const std::initializer_list<T> &init) {
         head = new LinkNode<T>();
-        tail = new LinkNode<T>();
-        head->next = tail;
-        tail->prev = head;
+        head->prev = head;
+        head->next = head;
         append(init);
     }
 
-    void clear() override {
-        LinkNode<T> *tmp;
-        while (head != tail) {
-            tmp = head->next;
+    ~CircularlyLinkList() {
+        uint total = 0;
+        head->prev->next = nullptr; // 首先断开圆环
+        LinkNode<T> *temp;
+        while (head != nullptr) { // 依次delete
+            temp = head->next;
             delete head;
-            head = tmp;
+            head = temp;
+            total++;
         }
-        delete head;
+        std::cout << "Release " << total << " nodes." << std::endl;
+    }
+
+    void clear() override {
+        head->prev->next = nullptr; // 首先断开圆环
+        LinkNode<T> *temp;
+        while (head != nullptr) { // 依次delete
+            temp = head->next;
+            delete head;
+            head = temp;
+        }
+        length = 0;
         head = new LinkNode<T>();
-        tail = new LinkNode<T>();
-        head->next = tail;
-        tail->prev = head;
+        head->prev = head;
+        head->next = head;
     }
 
     bool isEmpty() override {
@@ -74,11 +72,11 @@ public:
     }
 
     bool append(const T &src) override {
-        LinkNode<T> *tmp = new LinkNode<T>{src};
-        tmp->next = tail;
-        tmp->prev = tail->prev;
-        tail->prev = tmp;
-        tmp->prev->next = tmp;
+        LinkNode<T> *temp = new LinkNode<T>(src);
+        temp->next = head;
+        temp->prev = head->prev;
+        head->prev = temp;
+        temp->prev->next = temp;
         length++;
         return true;
     }
@@ -91,11 +89,10 @@ public:
     }
 
     bool insert(uint pos, const T &src) override {
-        if (pos >= length) return append(src);
-        LinkNode<T> *temp = findNode(pos);
-        LinkNode<T> *tmp = new LinkNode<T>{src};
-        tmp->prev = temp->prev;
+        LinkNode<T> *temp = findPtr(pos);
+        LinkNode<T> *tmp = new LinkNode<T>(src);
         tmp->next = temp;
+        tmp->prev = temp->prev;
         temp->prev = tmp;
         tmp->prev->next = tmp;
         length++;
@@ -110,8 +107,7 @@ public:
     }
 
     bool remove(uint pos) override {
-        if (pos >= length) return false;
-        LinkNode<T> *temp = findNode(pos);
+        LinkNode<T> *temp = findPtr(pos);
         temp->prev->next = temp->next;
         temp->next->prev = temp->prev;
         delete temp;
@@ -122,8 +118,8 @@ public:
     bool remove(uint start, uint end) override {
         if (start > end) return false;
         if (start == end) return remove(start);
-        LinkNode<T> *startPtr = findNode(start);
-        LinkNode<T> *endPtr = findNode(end);
+        LinkNode<T> *startPtr = findPtr(start);
+        LinkNode<T> *endPtr = findPtr(end);
         startPtr->prev->next = endPtr->next;
         endPtr->next->prev = startPtr->prev;
         length -= end - start + 1;
@@ -137,37 +133,43 @@ public:
     }
 
     T &find(uint pos) override {
-        return findNode(pos)->data;
+        return findPtr(pos)->data;
     }
 
     bool setValue(uint pos, const T &src) override {
-        if (pos >= length) return false;
-        findNode(pos)->data = src;
+        findPtr(pos)->data = src;
         return true;
     }
 
     int getPos(const T &src) override {
-        return findNode(src, false);
+        int index = 0;
+        LinkNode<T> *temp = head->next;
+        while (temp->next != head){
+            if (temp->data == src) return index;
+            index++;
+            temp = temp->next;
+        }
+        return -1;
     }
 
     T &operator[](int pos) override {
-        return findNode(pos)->data;
+        return find(pos);
     }
 
     void forEach(uint start, uint end, void (*opt)(T &)) override {
-        LinkNode<T> *startPtr = findNode(start);
-        LinkNode<T> *endPtr = findNode(end);
+        LinkNode<T> *startPtr = findPtr(start);
+        LinkNode<T> *endPtr = findPtr(end);
         while (startPtr != endPtr->next) {
             opt(startPtr->data);
             startPtr = startPtr->next;
         }
     }
 
-    friend std::ostream &operator<<(std::ostream &os, const DoubleLinkList &list) {
-        os << "DoubleLinkList Length: " << list.length << std::endl
+    friend std::ostream &operator<<(std::ostream &os, const CircularlyLinkList &list) {
+        os << "CircularlyLinkList Length: " << list.length << std::endl
            << "Content: ";
         LinkNode<T> *temp = list.head->next;
-        while (temp != list.tail) {
+        while (temp != list.head) {
             std::cout << temp->data << " ";
             temp = temp->next;
         }
@@ -177,29 +179,17 @@ public:
 
 private:
     LinkNode<T> *head;
-    LinkNode<T> *tail;
     uint length = 0;
 
-    LinkNode<T> *findNode(uint pos) {
+    LinkNode<T> *findPtr(uint pos){
         uint index = 0;
         LinkNode<T> *temp = head->next;
-        while (temp != nullptr) {
-            if (index == pos) break;
-            temp = temp->next;
+        while (temp->next != head){
+            if (index == pos) return temp;
             index++;
+            temp = temp->next;
         }
         return temp;
-    }
-
-    int findNode(const T &src, bool ) {
-        int index = 0;
-        LinkNode<T> *temp = head->next;
-        while (temp != tail) {
-            if (temp->data == src) return index;
-            temp = temp->next;
-            index++;
-        }
-        return -1;
     }
 };
 

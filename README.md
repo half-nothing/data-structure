@@ -3,11 +3,11 @@
 如果没有那也没事，写的不好请立刻指出（鞠躬）
 
 ### 目录
-- [ ] 线性表  
+- [X] 线性表  
     - [X] [顺序表](./src/LinearList/include/Array.h)    
-    - [ ] 单链表  
+    - [X] [单链表](./src/LinearList/include/SingleLinkList.h)  
     - [X] [双链表](./src/LinearList/include/DoubleLinkList.h)  
-    - [ ] 循环链表  
+    - [X] [循环双链表](./src/LinearList/include/CircularlyLinkList.h)
 - [ ] 栈与队列  
     - [ ] 顺序栈  
     - [ ] 链式栈  
