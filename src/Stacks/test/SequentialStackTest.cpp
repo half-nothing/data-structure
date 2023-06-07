@@ -1,4 +1,3 @@
-#include <iostream>
 #include "SequentialStack.h"
 
 using namespace std;

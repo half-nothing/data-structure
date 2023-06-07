@@ -1,4 +1,3 @@
-#include <iostream>
 #include "DoubleLinkList.h"
 using namespace std;
 

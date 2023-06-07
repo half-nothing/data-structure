@@ -10,30 +10,20 @@
 #include "Stack.h"
 
 template<typename T>
-struct LinkNode {
-    LinkNode<T> *next{nullptr};
-    T data;
-
-    LinkNode() = default;
-
-    explicit LinkNode(const T &data) : data(data) {}
-};
-
-template<typename T>
 class ChainStack : public Stack<T> {
 public:
     ChainStack() {
-        head = new LinkNode<T>();
+        head = new SingleLinkNode<T>();
     }
 
     ChainStack(const std::initializer_list<T> &init) {
-        head = new LinkNode<T>();
+        head = new SingleLinkNode<T>();
         push(init);
     }
 
     ~ChainStack() {
         uint total = 0; // 开个变量用来记录释放数量
-        LinkNode<T> *temp;
+        SingleLinkNode<T> *temp;
         while (head != nullptr) {
             temp = head->next;
             delete head;
@@ -44,7 +34,7 @@ public:
     }
 
     bool push(const T &src) override {
-        LinkNode<T> *temp = new LinkNode<T>(src);
+        SingleLinkNode<T> *temp = new SingleLinkNode<T>(src);
         temp->next = head->next;
         head->next = temp;
         length++;
@@ -59,7 +49,7 @@ public:
     }
 
     T &pop() override {
-        LinkNode<T> *temp = head->next;
+        SingleLinkNode<T> *temp = head->next;
         head->next = temp->next;
         T &tmp = temp->data;
         delete temp;
@@ -76,13 +66,13 @@ public:
     }
 
     void clear() override {
-        LinkNode<T> *temp;
+        SingleLinkNode<T> *temp;
         while (head != nullptr) {
             temp = head->next;
             delete head;
             head = temp;
         }
-        head = new LinkNode<T>();
+        head = new SingleLinkNode<T>();
     }
 
     uint size() override {
@@ -92,7 +82,7 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const ChainStack &stack) {
         os << "ChainStack Length: " << stack.length << std::endl
            << "Content: ";
-        LinkNode<T> *temp = stack.head->next;
+        SingleLinkNode<T> *temp = stack.head->next;
         while (temp != nullptr){
             std::cout << temp->data << " ";
             temp = temp->next;
@@ -102,7 +92,7 @@ public:
     }
 
 private:
-    LinkNode<T> *head;
+    SingleLinkNode<T> *head;
     uint length = 0;
 };
 

@@ -1,34 +1,23 @@
 #ifndef DATA_STRUCTURE_SINGLE_LINK_LIST_H
 #define DATA_STRUCTURE_SINGLE_LINK_LIST_H
 
-#include <initializer_list>
 #include "List.h"
-
-template<typename T>
-struct LinkNode {
-    LinkNode<T> *next{nullptr};
-    T data;
-
-    LinkNode() = default;
-
-    explicit LinkNode(const T &data) : data(data) {}
-};
 
 template<typename T>
 class SingleLinkList : public List<T> {
 public:
     SingleLinkList() {
-        head = new LinkNode<T>();
+        head = new SingleLinkNode<T>();
     };
 
     SingleLinkList(const std::initializer_list<T> &init){
-        head = new LinkNode<T>();
+        head = new SingleLinkNode<T>();
         append(init);
     }
 
     ~SingleLinkList() {
         uint total = 0;
-        LinkNode<T> *tmp;
+        SingleLinkNode<T> *tmp;
         while (head != nullptr) {
             tmp = head->next;
             delete head;
@@ -39,14 +28,14 @@ public:
     }
 
     void clear() override {
-        LinkNode<T> *tmp;
+        SingleLinkNode<T> *tmp;
         while (head != nullptr) {
             tmp = head->next;
             delete head;
             head = tmp;
         }
         length = 0;
-        head = new LinkNode<T>();
+        head = new SingleLinkNode<T>();
     }
 
     bool isEmpty() override {
@@ -58,8 +47,8 @@ public:
     }
 
     bool append(const T &src) override {
-        LinkNode<T> *temp = new LinkNode<T>(src);
-        LinkNode<T> *tmp = head;
+        SingleLinkNode<T> *temp = new SingleLinkNode<T>(src);
+        SingleLinkNode<T> *tmp = head;
         while (tmp->next != nullptr) {
             tmp = tmp->next;
         }
@@ -77,8 +66,8 @@ public:
 
     bool insert(uint pos, const T &src) override {
         if (pos >= length) return append(src);
-        LinkNode<T> *tmp = findPtr(pos);
-        LinkNode<T> *temp = new LinkNode<T>(src);
+        SingleLinkNode<T> *tmp = findPtr(pos);
+        SingleLinkNode<T> *temp = new SingleLinkNode<T>(src);
         temp->next = tmp->next;
         tmp->next = temp;
         length++;
@@ -94,8 +83,8 @@ public:
 
     bool remove(uint pos) override {
         if (pos >= length) return false;
-        LinkNode<T> *temp = findPtr(pos);
-        LinkNode<T> *target = temp->next;
+        SingleLinkNode<T> *temp = findPtr(pos);
+        SingleLinkNode<T> *target = temp->next;
         temp->next = target->next;
         delete target;
         length--;
@@ -106,8 +95,8 @@ public:
         if (start > end) return false;
         if (start == end) return remove(start);
         if (end >= length) {
-            LinkNode<T> *startPtr = findPtr(start);
-            LinkNode<T> *temp = startPtr->next;
+            SingleLinkNode<T> *startPtr = findPtr(start);
+            SingleLinkNode<T> *temp = startPtr->next;
             startPtr->next = nullptr;
             startPtr = temp;
             while (startPtr != nullptr){
@@ -118,9 +107,9 @@ public:
             length -= length - start - 1;
             return true;
         }
-        LinkNode<T> *startPtr = findPtr(start);
-        LinkNode<T> *endPtr = findPtr(end);
-        LinkNode<T> *temp = startPtr->next;
+        SingleLinkNode<T> *startPtr = findPtr(start);
+        SingleLinkNode<T> *endPtr = findPtr(end);
+        SingleLinkNode<T> *temp = startPtr->next;
         startPtr->next = endPtr->next->next;
         startPtr = temp;
         endPtr = endPtr->next;
@@ -144,7 +133,7 @@ public:
 
     int getPos(const T &src) override {
         int total = 0;
-        LinkNode<T> *temp = head->next;
+        SingleLinkNode<T> *temp = head->next;
         while (temp != nullptr){
             if (temp->data == src) return total;
             total++;
@@ -159,8 +148,8 @@ public:
 
     void forEach(uint start, uint end, void (*opt)(T &)) override {
         if (start > end) return;
-        LinkNode<T> *startPtr = findPtr(start)->next;
-        LinkNode<T> *endPtr = findPtr(end);
+        SingleLinkNode<T> *startPtr = findPtr(start)->next;
+        SingleLinkNode<T> *endPtr = findPtr(end);
         while (startPtr != endPtr->next){
             opt(startPtr->data);
             startPtr = startPtr->next;
@@ -170,7 +159,7 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const SingleLinkList &list) {
         os << "SingleLinkList Length: " << list.length << std::endl
             << "Content: ";
-        LinkNode<T> *temp = list.head->next;
+        SingleLinkNode<T> *temp = list.head->next;
         while (temp != nullptr){
             std::cout << temp->data << " ";
             temp = temp->next;
@@ -180,13 +169,13 @@ public:
     }
 
 private:
-    LinkNode<T> *head;
+    SingleLinkNode<T> *head;
     uint length = 0;
 
-    LinkNode<T> *findPtr(uint pos){
+    SingleLinkNode<T> *findPtr(uint pos){
         uint total = 0;
-        LinkNode<T> *prev = head;
-        LinkNode<T> *temp = head->next;
+        SingleLinkNode<T> *prev = head;
+        SingleLinkNode<T> *temp = head->next;
         while (temp != nullptr){
             if (total == pos) return prev;
             total++;

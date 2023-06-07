@@ -1,7 +1,7 @@
 #ifndef DATA_STRUCTURE_STACK_H
 #define DATA_STRUCTURE_STACK_H
 
-#include "Definition.h"
+#include "include.h"
 
 template<typename T>
 class Stack {

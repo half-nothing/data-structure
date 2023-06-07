@@ -83,7 +83,7 @@ public:
 private:
     T *data = nullptr;
     int now = -1;
-    int capacity = 8;
+    int capacity = STACK_MINIMUM_SIZE;
 
     void resize(int newSize) {
         capacity = newSize;

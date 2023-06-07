@@ -1,4 +1,3 @@
-#include <iostream>
 #include "ChainStack.h"
 
 using namespace std;

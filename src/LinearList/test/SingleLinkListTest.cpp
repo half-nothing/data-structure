@@ -1,4 +1,3 @@
-#include <iostream>
 #include "SingleLinkList.h"
 
 using namespace std;
