@@ -20,7 +20,7 @@ public:
     };
 
     ~DoubleLinkList() {
-        uint total = 0; // ¿ª¸ö±äÁ¿ÓÃÀ´¼ÇÂ¼ÊÍ·ÅÊıÁ¿
+        uint total = 0; // å¼€ä¸ªå˜é‡ç”¨æ¥è®°å½•é‡Šæ”¾æ•°é‡
         DoubleLinkNode<T> *tmp;
         while (head != nullptr) {
             tmp = head->next;
@@ -123,7 +123,7 @@ public:
         return true;
     }
 
-    T &find(uint pos) override {
+    T &get(uint pos) override {
         return findNode(pos)->data;
     }
 
@@ -158,7 +158,6 @@ public:
             std::cout << temp->data << " ";
             temp = temp->next;
         }
-        std::cout << std::endl;
         return os;
     }
 
@@ -178,7 +177,7 @@ private:
         return temp;
     }
 
-    int findNode(const T &src, bool ) {
+    int findNode(const T &src, bool) {
         int index = 0;
         DoubleLinkNode<T> *temp = head->next;
         while (temp != tail) {

@@ -1,75 +1,77 @@
 ## 数据结构
+
 这是我的数据结构学习记录，是我写出来的一点代码，如果对你有所帮助那最好不过  
 如果没有那也没事，写的不好请立刻指出（鞠躬）
 
 ### 目录
-- [X] 线性表  
-    - [X] [顺序表](./src/LinearList/include/Array.h) : [`159fe047`](https://github.com/half-nothing/Data-structure/commit/159fe0476cadda63ca996f7ddbe2b95d08b5b2f0)    
-    - [X] [单链表](./src/LinearList/include/SingleLinkList.h) : [`1aee4810`](https://github.com/half-nothing/Data-structure/commit/1aee4810ab79ee029d34d3d36b1207c05ed32884)  
-    - [X] [双链表](./src/LinearList/include/DoubleLinkList.h) : [`159fe047`](https://github.com/half-nothing/Data-structure/commit/159fe0476cadda63ca996f7ddbe2b95d08b5b2f0)  
+
+- [X] 线性表
+    - [X] [顺序表](./src/LinearList/include/Array.h) : [`159fe047`](https://github.com/half-nothing/Data-structure/commit/159fe0476cadda63ca996f7ddbe2b95d08b5b2f0)
+    - [X] [单链表](./src/LinearList/include/SingleLinkList.h) : [`1aee4810`](https://github.com/half-nothing/Data-structure/commit/1aee4810ab79ee029d34d3d36b1207c05ed32884)
+    - [X] [双链表](./src/LinearList/include/DoubleLinkList.h) : [`159fe047`](https://github.com/half-nothing/Data-structure/commit/159fe0476cadda63ca996f7ddbe2b95d08b5b2f0)
     - [X] [循环双链表](./src/LinearList/include/CircularlyLinkList.h) : [`1aee4810`](https://github.com/half-nothing/Data-structure/commit/1aee4810ab79ee029d34d3d36b1207c05ed32884)
-- [X] 栈与队列  
-    - [X] [顺序栈](./src/Stacks/include/SequentialStack.h) : [`66cb1280`](https://github.com/half-nothing/Data-structure/commit/66cb12801c1a7aba24762227fa913601e2b93978)  
-    - [X] [链式栈](./src/Stacks/include/ChainStack.h) : [`66cb1280`](https://github.com/half-nothing/Data-structure/commit/66cb12801c1a7aba24762227fa913601e2b93978)  
-    - [X] [顺序队列](./src/Queues/include/SequentialQueue.h) : [`3bd88e14`](https://github.com/half-nothing/Data-structure/commit/3bd88e14a34d08a4eaa589aaf606d0e393563d17)  
-    - [X] [链式队列](./src/Queues/include/ChainQueue.h) : [`3bd88e14`](https://github.com/half-nothing/Data-structure/commit/3bd88e14a34d08a4eaa589aaf606d0e393563d17)  
-- [ ] 字符串  
-    - [ ] 字符串  
-    - [ ] 字符串模式匹配算法  
-- [ ] 二叉树  
-    - [ ] 深度优先周游  
-    - [ ] 广度优先周游  
-    - [ ] 堆  
-    - [ ] 优先队列  
-- [ ] 树  
-    - [ ] 哈夫曼树  
-    - [ ] 顺序树  
-    - [ ] 链式树  
-- [ ] 图  
-    - [ ] 图-相邻矩阵   
-    - [ ] 图-邻接表  
-    - [ ] 图-十字链表  
-    - [ ] 深度优先周游  
-    - [ ] 广度优先周游  
-    - [ ] 最短路径算法  
-    - [ ] 最小生成树  
-- [ ] 内排序  
-    - [ ] 插入排序  
-        - [ ] 直接插入排序    
-        - [ ] Shell排序  
-    - [ ] 选择排序  
-        - [ ] 直接选择排序    
-        - [ ] 堆排序    
-    - [ ] 交换排序  
-        - [ ] 冒泡排序  
-        - [ ] 快速排序  
-    - [ ] 并归排序  
-    - [ ] 分配排序和索引排序  
-        - [ ] 桶式排序  
-        - [ ] 基数排序  
-        - [ ] 索引排序  
-- [ ] 外排序  
-    - [ ] 置换选择排序  
-    - [ ] 二路外排序  
-    - [ ] 多路并归  
-- [ ] 检索  
-    - [ ] 基于线性表的检索  
-        - [ ] 顺序检索  
-        - [ ] 二分检索  
-        - [ ] 分块检索  
-    - [ ] 散列方法  
-        - [ ] 散列函数  
-- [ ] 索引技术  
-    - [ ] 动态索引  
-        - [ ] B树  
-        - [ ] B+树  
-    - [ ] 位索引  
-        - [ ] 位图索引  
-    - [ ] 红黑树  
-- [ ] 高级数据结构  
-    - [ ] 多维矩阵  
-        - [ ] 特殊矩阵  
-        - [ ] 稀疏矩阵  
-    - [ ] Trie结构和Patricia树  
-    - [ ] 最佳二叉搜索树  
+- [X] 栈与队列
+    - [X] [顺序栈](./src/Stacks/include/SequentialStack.h) : [`66cb1280`](https://github.com/half-nothing/Data-structure/commit/66cb12801c1a7aba24762227fa913601e2b93978)
+    - [X] [链式栈](./src/Stacks/include/ChainStack.h) : [`66cb1280`](https://github.com/half-nothing/Data-structure/commit/66cb12801c1a7aba24762227fa913601e2b93978)
+    - [X] [顺序队列](./src/Queues/include/SequentialQueue.h) : [`3bd88e14`](https://github.com/half-nothing/Data-structure/commit/3bd88e14a34d08a4eaa589aaf606d0e393563d17)
+    - [X] [链式队列](./src/Queues/include/ChainQueue.h) : [`3bd88e14`](https://github.com/half-nothing/Data-structure/commit/3bd88e14a34d08a4eaa589aaf606d0e393563d17)
+- [X] 字符串
+    - [X] [字符串](./src/String/include/String.h) : [`161b2b4f`](https://github.com/half-nothing/Data-structure/commit/161b2b4ff5520da3704628ef88a9cb86774382cc)
+    - [X] [字符串模式匹配算法](./src/String/include/StringMatching.h) : [`161b2b4f`](https://github.com/half-nothing/Data-structure/commit/161b2b4ff5520da3704628ef88a9cb86774382cc)
+- [ ] 二叉树
+    - [ ] 深度优先周游
+    - [ ] 广度优先周游
+    - [ ] 堆
+    - [ ] 优先队列
+- [ ] 树
+    - [ ] 哈夫曼树
+    - [ ] 顺序树
+    - [ ] 链式树
+- [ ] 图
+    - [ ] 图-相邻矩阵
+    - [ ] 图-邻接表
+    - [ ] 图-十字链表
+    - [ ] 深度优先周游
+    - [ ] 广度优先周游
+    - [ ] 最短路径算法
+    - [ ] 最小生成树
+- [ ] 内排序
+    - [ ] 插入排序
+        - [ ] 直接插入排序
+        - [ ] Shell排序
+    - [ ] 选择排序
+        - [ ] 直接选择排序
+        - [ ] 堆排序
+    - [ ] 交换排序
+        - [ ] 冒泡排序
+        - [ ] 快速排序
+    - [ ] 并归排序
+    - [ ] 分配排序和索引排序
+        - [ ] 桶式排序
+        - [ ] 基数排序
+        - [ ] 索引排序
+- [ ] 外排序
+    - [ ] 置换选择排序
+    - [ ] 二路外排序
+    - [ ] 多路并归
+- [ ] 检索
+    - [ ] 基于线性表的检索
+        - [ ] 顺序检索
+        - [ ] 二分检索
+        - [ ] 分块检索
+    - [ ] 散列方法
+        - [ ] 散列函数
+- [ ] 索引技术
+    - [ ] 动态索引
+        - [ ] B树
+        - [ ] B+树
+    - [ ] 位索引
+        - [ ] 位图索引
+    - [ ] 红黑树
+- [ ] 高级数据结构
+    - [ ] 多维矩阵
+        - [ ] 特殊矩阵
+        - [ ] 稀疏矩阵
+    - [ ] Trie结构和Patricia树
+    - [ ] 最佳二叉搜索树
     - [ ] 平衡二叉搜索树  

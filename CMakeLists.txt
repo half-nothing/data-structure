@@ -17,6 +17,10 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")
 # 设置输出目录
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
+# 公用头文件目录
+include_directories(src/include)
+
 add_subdirectory(src/LinearList)
 add_subdirectory(src/Stacks)
 add_subdirectory(src/Queues)
+add_subdirectory(src/String)

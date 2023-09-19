@@ -76,7 +76,6 @@ public:
         for (int i = 0; i < queue.length; ++i) {
             std::cout << queue.data[i] << " ";
         }
-        std::cout << std::endl;
         return os;
     }
 

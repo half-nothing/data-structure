@@ -4,6 +4,7 @@
 #define ARRAY_MINIMUM_SIZE 8
 #define STACK_MINIMUM_SIZE 8
 #define QUEUE_MINIMUM_SIZE 8
+#define STRING_MINIMUM_SIZE 8
 
 typedef unsigned int uint;
 

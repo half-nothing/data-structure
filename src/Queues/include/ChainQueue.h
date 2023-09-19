@@ -100,7 +100,6 @@ public:
             std::cout << temp->data << " ";
             temp = temp->next;
         }
-        std::cout << std::endl;
         return os;
     }
 

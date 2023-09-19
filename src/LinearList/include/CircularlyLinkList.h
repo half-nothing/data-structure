@@ -27,9 +27,9 @@ public:
 
     ~CircularlyLinkList() {
         uint total = 0;
-        head->prev->next = nullptr; // 首先断开圆环
+        head->prev->next = nullptr; // 棣栧厛鏂紑鍦嗙幆
         DoubleLinkNode<T> *temp;
-        while (head != nullptr) { // 依次delete
+        while (head != nullptr) { // 渚濇delete
             temp = head->next;
             delete head;
             head = temp;
@@ -39,9 +39,9 @@ public:
     }
 
     void clear() override {
-        head->prev->next = nullptr; // 首先断开圆环
+        head->prev->next = nullptr; // 棣栧厛鏂紑鍦嗙幆
         DoubleLinkNode<T> *temp;
-        while (head != nullptr) { // 依次delete
+        while (head != nullptr) { // 渚濇delete
             temp = head->next;
             delete head;
             head = temp;
@@ -121,7 +121,7 @@ public:
         return true;
     }
 
-    T &find(uint pos) override {
+    T &get(uint pos) override {
         return findPtr(pos)->data;
     }
 
@@ -133,7 +133,7 @@ public:
     int getPos(const T &src) override {
         int index = 0;
         DoubleLinkNode<T> *temp = head->next;
-        while (temp->next != head){
+        while (temp->next != head) {
             if (temp->data == src) return index;
             index++;
             temp = temp->next;
@@ -142,7 +142,7 @@ public:
     }
 
     T &operator[](int pos) override {
-        return find(pos);
+        return get(pos);
     }
 
     void forEach(uint start, uint end, void (*opt)(T &)) override {
@@ -162,7 +162,6 @@ public:
             std::cout << temp->data << " ";
             temp = temp->next;
         }
-        std::cout << std::endl;
         return os;
     }
 
@@ -170,10 +169,10 @@ private:
     DoubleLinkNode<T> *head;
     uint length = 0;
 
-    DoubleLinkNode<T> *findPtr(uint pos){
+    DoubleLinkNode<T> *findPtr(uint pos) {
         uint index = 0;
         DoubleLinkNode<T> *temp = head->next;
-        while (temp->next != head){
+        while (temp->next != head) {
             if (index == pos) return temp;
             index++;
             temp = temp->next;

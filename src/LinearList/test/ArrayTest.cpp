@@ -1,37 +1,42 @@
 #include "Array.h"
+
 using namespace std;
 
-int main(){
-    // ´´½¨Êý×é
+int main() {
+#if _WIN32 || WIN32 || WIN64
+    system("chcp 65001");
+#endif
+    // åˆ›å»ºæ•°ç»„
     Array<int> array{1, 2, 3, 4};
-    cout << "At begin: " << endl << array;
-    // ²åÈëÊý¾Ý
+    cout << "At begin: " << endl << array << endl;
+    // æ’å…¥æ•°æ®
     array.insert(2, 5);
-    array.insert({{2, 6}, {2, 7}});
-    cout << "Insert 5,6,7 in index 2: " << endl << array;
-    // ÒÆ³ýÊý¾Ý
+    array.insert({{2, 6},
+                  {2, 7}});
+    cout << "Insert 5,6,7 in index 2: " << endl << array << endl;
+    // ç§»é™¤æ•°æ®
     array.remove(1);
-    cout << "Remove element in index 1: " << endl << array;
-    // ²âÊÔ×Ô¶¯À©ÈÝ
+    cout << "Remove element in index 1: " << endl << array << endl;
+    // æµ‹è¯•è‡ªåŠ¨æ‰©å®¹
     array.append({1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2, 1});
-    cout << "Add a lot of numbers: " << endl << array;
-    // ²âÊÔ×Ô¶¯ËõÈÝ
+    cout << "Add a lot of numbers: " << endl << array << endl;
+    // æµ‹è¯•è‡ªåŠ¨ç¼©å®¹
     array.remove(0, 14);
-    cout << "Remove a lot of numbers: " << endl << array;
-    // ²âÊÔ¶ÁÈ¡Êý¾Ý
+    cout << "Remove a lot of numbers: " << endl << array << endl;
+    // æµ‹è¯•è¯»å–æ•°æ®
     cout << "Element at index 1: " << array[1] << endl;
-    cout << "Element at index 2: " << array.find(2) << endl;
-    // ²âÊÔÐÞ¸ÄÊý¾Ý
+    cout << "Element at index 2: " << array.get(2) << endl;
+    // æµ‹è¯•ä¿®æ”¹æ•°æ®
     array[3] = 10;
     cout << "Change element at index 3 to 10: " << array[3] << endl;
     array.setValue(4, 12);
     cout << "Change element at index 4 to 12: " << array[4] << endl;
-    cout << array;
-    // ²âÊÔ±éÀú´¦Àí
+    cout << array << endl;
+    // æµ‹è¯•éåŽ†å¤„ç†
     cout << "Every element add 1: " << endl;
-    array.forEach(0, array.size(), [](int &tmp){ tmp += 1;});
-    cout << array;
-    // ²âÊÔ²éÕÒÔªËØ
+    array.forEach(0, array.size(), [](int &tmp) { tmp += 1; });
+    cout << array << endl;
+    // æµ‹è¯•æŸ¥æ‰¾å…ƒç´ 
     cout << "Element 13 at index: " << array.getPos(13) << endl;
     return 0;
 }

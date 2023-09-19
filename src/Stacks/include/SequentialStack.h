@@ -16,7 +16,7 @@ public:
         data = new T[capacity];
     }
 
-    SequentialStack(const std::initializer_list<T> &init){
+    SequentialStack(const std::initializer_list<T> &init) {
         data = new T[capacity];
         push(init);
     }
@@ -76,7 +76,6 @@ public:
         for (int i = 0; i < stack.now + 1; ++i) {
             std::cout << stack.data[i] << " ";
         }
-        std::cout << std::endl;
         return os;
     }
 

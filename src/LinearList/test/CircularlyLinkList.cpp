@@ -1,33 +1,38 @@
 #include "CircularlyLinkList.h"
+
 using namespace std;
 
-int main(){
-    // ³õÊ¼»¯Á´±í
+int main() {
+#if _WIN32 || WIN32 || WIN64
+    system("chcp 65001");
+#endif
+    // åˆå§‹åŒ–é“¾è¡¨
     CircularlyLinkList<int> circularlyLinkList{1, 2, 3, 4};
-    cout << "At begin: " << endl << circularlyLinkList;
-    // Ìí¼ÓÔªËØ
+    cout << "At begin: " << endl << circularlyLinkList << endl;
+    // æ·»åŠ å…ƒç´ 
     circularlyLinkList.append({5, 6, 7});
-    cout << "Add 5,6,7 to the end: " << endl << circularlyLinkList;
-    // ²åÈëÔªËØ
-    circularlyLinkList.insert({{2, 8}, {2, 9}});
-    cout << "Insert 8,9 to index 2: " << endl << circularlyLinkList;
-    // É¾³ıÔªËØ
+    cout << "Add 5,6,7 to the end: " << endl << circularlyLinkList << endl;
+    // æ’å…¥å…ƒç´ 
+    circularlyLinkList.insert({{2, 8},
+                               {2, 9}});
+    cout << "Insert 8,9 to index 2: " << endl << circularlyLinkList << endl;
+    // åˆ é™¤å…ƒç´ 
     circularlyLinkList.remove(2, 5);
-    cout << "Remove elements index between 2 and 5: " << endl << circularlyLinkList;
-    // »ñÈ¡ÔªËØÖµ
+    cout << "Remove elements index between 2 and 5: " << endl << circularlyLinkList << endl;
+    // è·å–å…ƒç´ å€¼
     cout << "Element at index 2 is " << circularlyLinkList[2] << endl;
-    cout << "Element at index 3 is " << circularlyLinkList.find(3) << endl;
-    // ĞŞ¸ÄÔªËØÖµ
+    cout << "Element at index 3 is " << circularlyLinkList.get(3) << endl;
+    // ä¿®æ”¹å…ƒç´ å€¼
     circularlyLinkList[2] = 10;
     cout << "Change element at index 2 to " << circularlyLinkList[2] << endl;
     circularlyLinkList.setValue(3, 12);
     cout << "Change element at index 3 to " << circularlyLinkList[3] << endl;
-    cout << circularlyLinkList;
-    // ±éÀú²âÊÔ
+    cout << circularlyLinkList << endl;
+    // éå†æµ‹è¯•
     cout << "Every element add 1: " << endl;
-    circularlyLinkList.forEach(0, circularlyLinkList.size(), [](int &tmp){ tmp += 1;});
-    cout << circularlyLinkList;
-    // ²éÕÒ²âÊÔ
+    circularlyLinkList.forEach(0, circularlyLinkList.size(), [](int &tmp) { tmp += 1; });
+    cout << circularlyLinkList << endl;
+    // æŸ¥æ‰¾æµ‹è¯•
     cout << "Element 13 at index " << circularlyLinkList.getPos(13) << endl;
 
     return 0;

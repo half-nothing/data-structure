@@ -6,46 +6,46 @@
 template<typename T>
 class List {
 public:
-    // Çå¿ÕÏßĞÔ±í
+    // æ¸…ç©ºçº¿æ€§è¡¨
     virtual void clear() = 0;
 
-    // ÅĞ¶ÏÏßĞÔ±íÊÇ·ñÎª¿Õ
+    // åˆ¤æ–­çº¿æ€§è¡¨æ˜¯å¦ä¸ºç©º
     virtual bool isEmpty() = 0;
 
-    // »ñÈ¡ÏßĞÔ±í³¤¶È
+    // è·å–çº¿æ€§è¡¨é•¿åº¦
     virtual uint size() = 0;
 
-    // ÏòÏßĞÔ±íÄ©Î²Ìí¼ÓÔªËØ
+    // å‘çº¿æ€§è¡¨æœ«å°¾æ·»åŠ å…ƒç´ 
     virtual bool append(const T &src) = 0;
 
-    // ÅúÁ¿Ìí¼ÓÔªËØ
+    // æ‰¹é‡æ·»åŠ å…ƒç´ 
     virtual bool append(const std::initializer_list<T> &src) = 0;
 
-    // ÏòÏßĞÔ±íÖĞ¼ä²åÈëÔªËØ
+    // å‘çº¿æ€§è¡¨ä¸­é—´æ’å…¥å…ƒç´ 
     virtual bool insert(uint pos, const T &src) = 0;
 
-    // ÅúÁ¿²åÈëÔªËØ
+    // æ‰¹é‡æ’å…¥å…ƒç´ 
     virtual bool insert(const std::initializer_list<std::pair<uint, T>> &src) = 0;
 
-    // ÒÆ³ıÄ³Ò»ÔªËØ
+    // ç§»é™¤æŸä¸€å…ƒç´ 
     virtual bool remove(uint pos) = 0;
 
-    // ÅúÁ¿ÒÆ³ıÔªËØ
+    // æ‰¹é‡ç§»é™¤å…ƒç´ 
     virtual bool remove(uint start, uint end) = 0;
 
-    // »ñÈ¡Ä³Ò»ÔªËØ
-    virtual T &find(uint pos) = 0;
+    // è·å–æŸä¸€å…ƒç´ 
+    virtual T &get(uint pos) = 0;
 
-    // ÉèÖÃÄ³Ò»ÔªËØ
+    // è®¾ç½®æŸä¸€å…ƒç´ 
     virtual bool setValue(uint pos, const T &src) = 0;
 
-    // »ñÈ¡Ä³¸öÔªËØµÄÏÂ±ê
+    // è·å–æŸä¸ªå…ƒç´ çš„ä¸‹æ ‡
     virtual int getPos(const T &src) = 0;
 
-    // ÖØÔØ[]ÔËËã·û
+    // é‡è½½[]è¿ç®—ç¬¦
     virtual T &operator[](int pos) = 0;
 
-    // ´ÓstartÏÂ±êµ½endÏÂ±êÒÀ´Î×öopt´¦Àí
+    // ä»startä¸‹æ ‡åˆ°endä¸‹æ ‡ä¾æ¬¡åšoptå¤„ç†
     virtual void forEach(uint start, uint end, void (*opt)(T &)) = 0;
 };
 

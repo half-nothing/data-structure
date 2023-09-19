@@ -1,7 +1,6 @@
 message(STATUS "LinearList")
 
 include_directories(include)
-include_directories(../include)
 
 add_executable(Array test/ArrayTest.cpp)
 add_executable(DoubleLinkList test/DoubleLinkListTest.cpp)

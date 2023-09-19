@@ -13,24 +13,22 @@ template<typename T>
 class Array : public List<T> {
 public:
     Array() {
-        data = new T[capacity]; // ¿ªÒ»¿éĞÂ¿Õ¼ä
+        data = new T[capacity]{}; // å¼€ä¸€å—æ–°ç©ºé—´å¹¶åˆå§‹åŒ–
     }
 
     Array(const std::initializer_list<T> &init) {
-        data = new T[capacity];
+        data = new T[capacity]{};
         append(init);
     }
 
     ~Array() {
-        if (data != nullptr) {
-            delete[] data; // Èç¹û²»ÊÇ¿ÕÖ¸ÕëÔòdeleteµô(nullptr deleteÒ²Ã»É¶ÊÂ¾ÍÊÇËµ)
-        }
+        delete[] data; // å¦‚æœä¸æ˜¯ç©ºæŒ‡é’ˆåˆ™deleteæ‰(nullptr deleteä¹Ÿæ²¡å•¥äº‹å°±æ˜¯è¯´)
     }
 
     void clear() override {
-        delete[] data; // Çå¿ÕÊı¾İ´æ´¢
+        delete[] data; // æ¸…ç©ºæ•°æ®å­˜å‚¨
         length = 0;
-        data = new T[capacity]; // ĞÂ¿ªÒ»¿éÄÚ´æ
+        data = new T[capacity]; // æ–°å¼€ä¸€å—å†…å­˜
     }
 
     bool isEmpty() override {
@@ -42,11 +40,11 @@ public:
     }
 
     bool append(const T &src) override {
-        if (length < capacity) { // Èç¹ûÃ»ÓĞ³¬³öÈİÁ¿ÏŞÖÆ
-            data[length++] = src; // Ö±½Ó·Å½øÈ¥È»ºó³¤¶È+1
+        if (length < capacity) { // å¦‚æœæ²¡æœ‰è¶…å‡ºå®¹é‡é™åˆ¶
+            data[length++] = src; // ç›´æ¥æ”¾è¿›å»ç„¶åé•¿åº¦+1
             return true;
         }
-        resize(capacity * 2); // Èç¹û³¬³öÈİÁ¿ÏŞÖÆÔòÖØĞÂ·ÖÅä¿Õ¼ä,ĞÂ¿Õ¼ä´óĞ¡ÊÇÔ­À´µÄÁ½±¶(nÌØ±ğ´óµÄÊ±ºò»áÄÚ´æ´íÎó)
+        resize(capacity * 2); // å¦‚æœè¶…å‡ºå®¹é‡é™åˆ¶åˆ™é‡æ–°åˆ†é…ç©ºé—´,æ–°ç©ºé—´å¤§å°æ˜¯åŸæ¥çš„ä¸¤å€(nç‰¹åˆ«å¤§çš„æ—¶å€™ä¼šå†…å­˜é”™è¯¯)
         data[length++] = src;
         return true;
     }
@@ -59,12 +57,12 @@ public:
     }
 
     bool insert(uint pos, const T &src) override {
-        if (pos >= length) return append(src); // Èç¹ûpos´óÓÚ³¤¶È,Ñ¹¸ùÕÒ²»µ½ÄãÕâ¸öµØ·½¾ÍÔÚ¶ÓÎ²ÍÆÈë
+        if (pos >= length) return append(src); // å¦‚æœposå¤§äºé•¿åº¦,å‹æ ¹æ‰¾ä¸åˆ°ä½ è¿™ä¸ªåœ°æ–¹å°±åœ¨é˜Ÿå°¾æ¨å…¥
         if (length >= capacity) {
             resize(capacity * 2);
         }
         for (int i = length; i > pos; --i) {
-            data[i] = data[i - 1]; // ½«ÔªËØÒÀ´ÎºóÒÆÒ»¸öÎ»ÖÃ
+            data[i] = data[i - 1]; // å°†å…ƒç´ ä¾æ¬¡åç§»ä¸€ä¸ªä½ç½®
         }
         data[pos] = src;
         length++;
@@ -79,13 +77,13 @@ public:
     }
 
     bool remove(uint pos) override {
-        if (pos >= length) return false; // Èç¹ûÑ¹¸ùÃ»ÓĞ,Ö±½Ó·µ»Ø
+        if (pos >= length) return false; // å¦‚æœå‹æ ¹æ²¡æœ‰,ç›´æ¥è¿”å›
         for (int i = pos; i < length - 1; ++i) {
-            data[i] = data[i + 1]; // ÔªËØÒÀ´ÎÇ°ÒÆ
+            data[i] = data[i + 1]; // å…ƒç´ ä¾æ¬¡å‰ç§»
         }
         length--;
         if (length <= capacity / 4 && capacity / 2 >= ARRAY_MINIMUM_SIZE) {
-            resize(capacity / 2); // Èç¹ûµ±Ç°³¤¶ÈĞ¡ÓÚµÈÓÚÈİÁ¿µÄËÄ·ÖÖ®Ò»²¢ÇÒÈİÁ¿µÄÒ»°ë´óÓÚµÈÓÚ×îĞ¡ÈİÁ¿,ÔòËõÈİÖÁÔ­À´µÄÒ»°ë
+            resize(capacity / 2); // å¦‚æœå½“å‰é•¿åº¦å°äºç­‰äºå®¹é‡çš„å››åˆ†ä¹‹ä¸€å¹¶ä¸”å®¹é‡çš„ä¸€åŠå¤§äºç­‰äºæœ€å°å®¹é‡,åˆ™ç¼©å®¹è‡³åŸæ¥çš„ä¸€åŠ
         }
         return true;
     }
@@ -94,7 +92,7 @@ public:
         if (end >= length) return false;
         if (start > end) return false;
         for (int i = end; i < length; ++i) {
-            data[start + i - end] = data[i]; // Ö±½ÓÕûÌåÇ°ÒÆ
+            data[start + i - end] = data[i]; // ç›´æ¥æ•´ä½“å‰ç§»
         }
         length -= end - start + 1;
         if (length <= capacity / 4 && capacity / 2 >= ARRAY_MINIMUM_SIZE) {
@@ -103,7 +101,7 @@ public:
         return true;
     }
 
-    T &find(uint pos) override {
+    T &get(uint pos) override {
         return data[pos];
     }
 
@@ -140,9 +138,9 @@ public:
         for (int i = 0; i < src.length; ++i) {
             out << src.data[i] << " ";
         }
-        out << std::endl;
         return out;
     }
+
 private:
     T *data = nullptr;
     uint length = 0;

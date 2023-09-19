@@ -3,18 +3,22 @@
 using namespace std;
 
 int main() {
-    // ³õÊ¼»¯
+#if _WIN32 || WIN32 || WIN64
+    system("chcp 65001");
+#endif
+    // åˆå§‹åŒ–
     ChainStack<int> stack{1, 2, 3, 4, 5, 6};
-    cout << "At Begin: " << endl << stack;
-    // ×Ô¶¯À©Èİ
+    cout << "At Begin: " << endl << stack << endl;
+    // è‡ªåŠ¨æ‰©å®¹
     stack.push({7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17});
-    cout << "Add 7 to 17 into stack: " << endl << stack;
-    cout << "Take the top of the stack three times: " << endl << stack.pop() << " " << stack.pop() << " " << stack.pop() << endl;
-    cout << stack << "Delete 8 elements: " << endl;
-    // ×Ô¶¯ËõÈİ
+    cout << "Add 7 to 17 into stack: " << endl << stack << endl;
+    cout << "Take the top of the stack three times: " << endl << stack.pop() << " " << stack.pop() << " " << stack.pop()
+         << endl;
+    cout << stack << endl << "Delete 8 elements: " << endl;
+    // è‡ªåŠ¨ç¼©å®¹
     for (int i = 0; i < 8; ++i) {
         stack.pop();
     }
-    cout << stack;
+    cout << stack << endl;
     return 0;
 }

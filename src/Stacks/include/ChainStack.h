@@ -22,7 +22,7 @@ public:
     }
 
     ~ChainStack() {
-        uint total = 0; // ¿ª¸ö±äÁ¿ÓÃÀ´¼ÇÂ¼ÊÍ·ÅÊıÁ¿
+        uint total = 0; // å¼€ä¸ªå˜é‡ç”¨æ¥è®°å½•é‡Šæ”¾æ•°é‡
         SingleLinkNode<T> *temp;
         while (head != nullptr) {
             temp = head->next;
@@ -83,11 +83,10 @@ public:
         os << "ChainStack Length: " << stack.length << std::endl
            << "Content: ";
         SingleLinkNode<T> *temp = stack.head->next;
-        while (temp != nullptr){
+        while (temp != nullptr) {
             std::cout << temp->data << " ";
             temp = temp->next;
         }
-        std::cout << std::endl;
         return os;
     }
 
