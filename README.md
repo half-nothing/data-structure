@@ -16,8 +16,8 @@
     - [X] [顺序队列](./src/Queues/include/SequentialQueue.h) : [`3bd88e14`](https://github.com/half-nothing/Data-structure/commit/3bd88e14a34d08a4eaa589aaf606d0e393563d17)
     - [X] [链式队列](./src/Queues/include/ChainQueue.h) : [`3bd88e14`](https://github.com/half-nothing/Data-structure/commit/3bd88e14a34d08a4eaa589aaf606d0e393563d17)
 - [X] 字符串
-    - [X] [字符串](./src/String/include/String.h) : [`161b2b4f`](https://github.com/half-nothing/Data-structure/commit/161b2b4ff5520da3704628ef88a9cb86774382cc)
-    - [X] [字符串模式匹配算法](./src/String/include/StringMatching.h) : [`161b2b4f`](https://github.com/half-nothing/Data-structure/commit/161b2b4ff5520da3704628ef88a9cb86774382cc)
+    - [X] [字符串](./src/String/include/String.h) : [`d2613082`](https://github.com/half-nothing/Data-structure/commit/d26130824356c9e348d6d5251223f0de5d0d0aab)
+    - [X] [字符串模式匹配算法](./src/String/include/StringMatching.h) : [`d2613082`](https://github.com/half-nothing/Data-structure/commit/d26130824356c9e348d6d5251223f0de5d0d0aab)
 - [ ] 二叉树
     - [ ] 深度优先周游
     - [ ] 广度优先周游
