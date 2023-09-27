@@ -1,8 +1,9 @@
 #include "StringMatching.h"
 #include <iostream>
+
 using namespace std;
 
-int main(){
+int main() {
     String string("ABCABCDABCDEFG");
     String target("ABCD");
     cout << string;
